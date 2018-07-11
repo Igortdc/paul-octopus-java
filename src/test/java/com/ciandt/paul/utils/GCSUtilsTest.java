@@ -42,6 +42,6 @@ public class GCSUtilsTest {
      */
     @Test
     public void shouldWriteFileToGCS() throws Exception {
-        gcsUtils.writeFile("unittest_paul_java", "teste.txt", "teste");
+        gcsUtils.writeFile("unittest_paul_hackaton_java", "teste.txt", "teste");
     }
 }

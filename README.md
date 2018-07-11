@@ -77,7 +77,7 @@ Steps to install and configure the project:
      -d,--debug             [OPTIONAL] turn on debug mode (default = off)
      -f,--file              [OPTIONAL] generates the CSV file (only for 'predict' command) (default = no file)
      -p,--predictor <arg>   [OPTIONAL] predictor to be used (must be class name - ex. ZeroZeroPredictor, only for 'predict' command) (default = DefaultPredictor)
-     -u,--username <arg>    username / login (required for 'upload' command)
+     -b,--bucket <arg>    bucket (required for 'upload' command)
     ``` 
 
 ## Working on your prediction
@@ -176,7 +176,7 @@ First, you must execute a prediction using the `-f` flag.
 2018-05-08 20:30:05 - * Overall performance = 30.8333 %
 2018-05-08 20:30:05 - **********************************************
 2018-05-08 20:30:05 - Generating file predictions.csv
-2018-05-08 20:30:05 - File created successfully. Run './paul.sh -c upload -u <username>' to upload it.
+2018-05-08 20:30:05 - File created successfully. Run './paul.sh -c upload -b <bucket>' to upload it.
 2018-05-08 20:30:05 - Process completed successfully!
 
 ```
@@ -200,7 +200,7 @@ Croatia,0,0,Nigeria
 Upload the file to your bucket using the following command:
 
 ```
-> ./paul.sh -c upload -u viveiros
+> ./paul.sh -c upload -b ciandt_octopus_my_bucket
     ____              __   __  __            ____       __
    / __ \____ ___  __/ /  / /_/ /_  ___     / __ \_____/ /_____  ____  __  _______
   / /_/ / __ `/ / / / /  / __/ __ \/ _ \   / / / / ___/ __/ __ \/ __ \/ / / / ___/

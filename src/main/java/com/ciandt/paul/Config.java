@@ -11,9 +11,9 @@ public class Config {
     private Integer worldCupYear = 2018;
     private Integer[] trainingYears = {2006, 2010, 2014};
     private String debug = "false";
-    private String datasetBucket = "project-paul-the-octopus-datasets";
+    private String datasetBucket = "paul-octopus-hackaton-datasets";
     private String predictionsFilename = "predictions.csv";
-    private String predictionsBucketPrefix = "ciandt_projectoctopus_2018_";
+    private String predictionsBucketPrefix = "";
     private Integer maxScorePerWorldCup = 25 * 48;
     private String defaultPredictor = "DefaultPredictor";
 

@@ -94,14 +94,14 @@ public class PredictionService {
             bufferedWriter.write(csvContent);
             bufferedWriter.flush();
             bufferedWriter.close();
-            logger.info("File created successfully. Run './paul.sh -c upload -u <username>' to upload it.");
+            logger.info("File created successfully. Run './paul.sh -c upload -b <bucket>' to upload it.");
         }
     }
 
     /**
      * Upload the prediction to GCS
      */
-    public void uploadPredictions(String username) throws IOException {
+    public void uploadPredictions(String bucket) throws IOException {
 
         File file = new File(config.getPredictionsFilename());
         if (!file.exists()) {
@@ -110,10 +110,8 @@ public class PredictionService {
 
         //read the content
         String fileContent = FileUtils.readFileToString(file, "UTF-8");
-        logger.info("Uploading file " + config.getPredictionsFilename() + " to bucket " +
-                config.getPredictionsBucketPrefix() + username);
-        gcsUtils.writeFile(config.getPredictionsBucketPrefix() + username,
-                config.getPredictionsFilename(), fileContent);
+        logger.info("Uploading file " + config.getPredictionsFilename() + " to bucket " + bucket);
+        gcsUtils.writeFile(bucket, config.getPredictionsFilename(), fileContent);
         logger.info("Upload completed!");
     }
 
