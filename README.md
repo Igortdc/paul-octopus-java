@@ -17,7 +17,7 @@ Steps to install and configure the project:
 2. Clone the repository
 
     ```
-    > git clone https://github.com/dviveiros/paul-octopus-java
+    > git clone https://github.com/ivamluz/paul-octopus-java.git
     ```
 
 3. Install [Gradle 4.7](https://gradle.org/releases/) or later. After that, make sure that the GRADLE_HOME environment variable is properly set and exported.
