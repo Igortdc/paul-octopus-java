@@ -55,11 +55,11 @@ public class Application implements CommandLineRunner {
         output.setRequired(false);
         options.addOption(file);
 
-        Option username = new Option("u", "username", true, "[OPTIONAL] predictor to be used (must be class name - ex. ZeroZeroPredictor, only for 'predict' command) (default = DefaultPredictor)");
+        Option bucket = new Option("b", "bucket", true, "bucket name (required for 'upload' command)");
         output.setRequired(false);
-        options.addOption(username);
+        options.addOption(bucket);
 
-        Option predictor = new Option("p", "predictor", true, "username / login (required for 'upload' command)");
+        Option predictor = new Option("p", "predictor", true, "[OPTIONAL] predictor to be used (must be class name - ex. ZeroZeroPredictor, only for 'predict' command) (default = DefaultPredictor)");
         output.setRequired(false);
         options.addOption(predictor);
 
@@ -82,7 +82,7 @@ public class Application implements CommandLineRunner {
             config.setDebug("true");
         }
         Boolean generateFile = cmd.hasOption("file");
-        String strUsername = cmd.getOptionValue("username");
+        String strBucket = cmd.getOptionValue("bucket");
         String strPredictor = cmd.getOptionValue("predictor");
         if (strPredictor == null) {
             strPredictor = config.getDefaultPredictor();
@@ -97,7 +97,7 @@ public class Application implements CommandLineRunner {
             logger.debug("command = " + command);
             logger.debug("debug mode = " + debugEnabled);
             logger.debug("generate file = " + generateFile);
-            logger.debug("username = " + strUsername);
+            logger.debug("bucket = " + strBucket);
             logger.debug("predictor = " + strPredictor);
         }
 
@@ -113,12 +113,12 @@ public class Application implements CommandLineRunner {
 
         //upload
         if ("upload".equals(command)) {
-            if (strUsername == null) {
+            if (strBucket == null) {
                 formatter.printHelp("paul.sh", options);
                 System.exit(1);
             } else {
                 try {
-                    predictionService.uploadPredictions(strUsername);
+                    predictionService.uploadPredictions(strBucket);
                 } catch (IOException e) {
                     logger.error("Error uploading file to GCS", e);
                     System.exit(1);
